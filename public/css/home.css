@@ -1,0 +1,56 @@
+body {
+    background-color: #FFFFFF;
+}
+
+h1, p {
+    color: #000000;
+}
+
+.contents_box{
+    width: 400px;
+    height: 150px;
+    background-color: aliceblue;
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.contents_box2 {
+    width: 400px;
+    height: 100px;
+    background-color: aliceblue;
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.result_table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 700px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+  }
+  .result_table tr {
+    background-color: #e6f1f6;
+  }
+  .result_table tr:nth-child(odd) {
+    background-color: #fff;
+  }
+  .result_table th, .result_table td {
+    padding: 1em;
+  }
+  .result_table caption{
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    min-width: 4em;    
+  }
+  .result_table th {
+    font-weight: bold;
+    text-align: center;
+    width: 20%;
+    min-width: 4em;
+  }
+
+  .operation {
+    margin-top: 20px;
+  }
