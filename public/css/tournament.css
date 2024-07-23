@@ -15,77 +15,77 @@ a {
     white-space: nowrap;
 }
 
-#A {
+#A, #team1 {
     top: 152px;
     left: 90px;
 }
 
-#B {
+#B, #team2 {
     top: 222px;
     left: 90px;
 }
 
-#C {
+#C, #team3 {
     top: 292px;
     left: 90px;
 }
 
-#D {
+#D, #team4 {
     top: 362px;
     left: 90px;
 }
 
-#E {
+#E, #team5 {
     top: 432px;
     left: 90px;
 }
 
-#F {
+#F, #team6 { 
     top: 502px;
     left: 90px;
 }
 
-#G {
+#G, #team7 {
     top: 572px;
     left: 90px;
 }
 
-#H {
+#H, #team8 {
     top: 642px;
     left: 90px;
 }
 
-#I {
+#I, #team9 {
     top: 187px;
     left: 345px;
 }
 
-#J {
+#J, #team10 {
     top: 327px;
     left: 345px;
 }
 
-#K {
+#K, #team11 {
     top: 467px;
     left: 345px;
 }
 
-#L {
+#L, #team12 {
     top: 607px;
     left: 345px;
 }
 
-#M {
+#M, #team13 {
     top: 257px;
     left: 600px;
 }
 
-#N {
+#N, #team14 {
     top: 537px;
     left: 600px;
 }
 
-#O {
+#O, #team15 {
     top: 395px;
     left: 855px;
 }

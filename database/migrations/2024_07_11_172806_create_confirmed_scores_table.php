@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tournaments', function (Blueprint $table) {
+        Schema::create('confirmed_scores', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 20);
-            $table->string('body', 100);
-            $table->string('champion', 20);
-            $table->integer('justice_point')->default(1);
-            $table->integer('attack_point')->default(3);
-            $table->integer('miss_point')->default(3);
+            $table->foreignId('entry_id')->constrained();
+            $table->integer('member');
+            $table->integer('number');
+            $table->integer('score');
+            $table->integer('exscore');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tournaments');
+        Schema::dropIfExists('confirmed_scores');
     }
 };

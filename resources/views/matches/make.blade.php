@@ -3,14 +3,14 @@
     <head>
         <meta charset="UTF-08">
         <title>CHUNITHM_Match</title>
-        <link rel="stylesheet" href="./CSS/home.css">
+        <link rel="stylesheet" href="/css/home.css">
     </head>
 
     <body>
         <h1>CHUNITHM Score Attack</h1>
         <p>大会の設定</p>
 
-        <label for="match-name">大会名：</label>
+        <label for="match-make">大会名：</label>
         <input type="search" id="match-make">
         <br>
 
@@ -28,8 +28,9 @@
         </label>
         <br>
 
-        <label for="match-type">大会形式：</label>
+        <label for="match-type">大会形式：
         <input type="search" id="match-type">
+        </label>
         <br>
 
         <label for="score-type">スコア形式：</label>
@@ -41,7 +42,7 @@
             <input type="radio" name="primary">無
 
             
-        <p><a href="operation.blade.php">戻る</a></p>
+        <p><a href="/matches/opartion">戻る</a></p>
 
     </body>
 </html>
