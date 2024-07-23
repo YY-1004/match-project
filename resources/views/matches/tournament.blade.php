@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-        <meta charset="UTF-08">
+        <meta charset="utf-8">
         <title>CHUNITHM_Match</title>
-        <link rel="stylesheet" href="css/tournament.css">
+        <link rel="stylesheet" href="/css/tournament.css">
     </head>
 
     <body class="mySVG">
         <h1>CHUNITHM Score Attack</h1>
-        <p>大会名</p>
+        <p>{{ $tournaments[0]['name'] }}</p>
         <img
             class="tournament_image"
             src="svg/tournament.svg"
             alt=""
         />
-        <a id="A" href="result.blade.php#resultAB">{{$team_1}}</a>
-        <a id="B" href="result.blade.php#resultAB">{{$team_2}}</a>
-        <a id="C" href="result.blade.php#resultCD">{{$team_3}}</a>
-        <a id="D" href="result.blade.php#resultCD">{{$team_4}}</a>
-        <a id="E" href="result.blade.php#resultEF">{{$team_5}}</a>
-        <a id="F" href="result.blade.php#resultEF">{{$team_6}}</a>
-        <a id="G" href="result.blade.php#resultGH">{{$team_7}}</a>
-        <a id="H" href="result.blade.php#resultGH">{{$team_8}}</a>
-        <a id="I" href="result.blade.php#resultIJ">{{$team_9}}</a>
-        <a id="J" href="result.blade.php#resultIJ">{{$team_10}}</a>
-        <a id="K" href="result.blade.php#resultKL">{{$team_11}}</a>
-        <a id="L" href="result.blade.php#resultKL">{{$team_12}}</a>
-        <a id="M" href="result.blade.php#resultMN">{{$team_13}}</a>
-        <a id="N" href="result.blade.php#resultMN">{{$team_14}}</a>
-        <a id="O" href="result.blade.php#resultMN">{{$team_15}}</a>
+        <a id="A" href="/matches/result#resultAB">{{ $teams[0]['nickname'] }}</a>
+        <a id="B" href="/matches/result#resultAB">{{ $teams[1]['nickname'] }}</a>
+        <a id="C" href="/matches/result#resultCD">{{ $teams[2]['nickname'] }}</a>
+        <a id="D" href="/matches/result#resultCD">{{ $teams[3]['nickname'] }}</a>
+        <a id="E" href="/matches/result#resultEF">{{ $teams[4]['nickname'] }}</a>
+        <a id="F" href="/matches/result#resultEF">{{ $teams[5]['nickname'] }}</a>
+        <a id="G" href="/matches/result#resultGH">{{ $teams[6]['nickname'] }}</a>
+        <a id="H" href="/matches/result#resultGH">{{ $teams[7]['nickname'] }}</a>
+        <a id="I" href="/matches/result#resultIJ">{{ $teams[0]['nickname'] }}</a>
+        <a id="J" href="/matches/result#resultIJ">{{ $teams[2]['nickname'] }}</a>
+        <a id="K" href="/matches/result#resultKL">{{ $teams[4]['nickname'] }}</a>
+        <a id="L" href="/matches/result#resultKL">{{ $teams[6]['nickname'] }}</a>
+        <a id="M" href="/matches/result#resultMN">{{ $teams[2]['nickname'] }}</a>
+        <a id="N" href="/matches/result#resultMN">{{ $teams[4]['nickname'] }}</a>
+        <a id="O" href="/matches/result#resultMN">{{ $teams[2]['nickname'] }}</a>
 
-        <p><a id="re" href="/match/resources/views/matches/ban.blade.php">戻る</a></p>
+        <p><a id="re" href="/matches/ban">戻る</a></p>
 
     </body>
 </html>

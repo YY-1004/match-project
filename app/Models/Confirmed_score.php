@@ -5,7 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Member extends Model
+class Confirmed_score extends Model
 {
     use HasFactory;
+    
+    public function entry()
+    {
+        return $this->belongsTo(Entry::class);
+    }
 }

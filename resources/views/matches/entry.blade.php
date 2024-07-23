@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-08">
         <title>CHUNITHM_Match</title>
-        <link rel="stylesheet" href="./CSS/home.css">
+        <link rel="stylesheet" href="/css/home.css">
     </head>
 
     <body>
@@ -13,6 +13,6 @@
         <input type="search" id="match-search">
 
         <button>検索</button>
-        <p><a href="home.blade.php">戻る</a></p>
+        <p><a href="/matches/home">戻る</a></p>
     </body>
 </html>

@@ -3,44 +3,117 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Member;
+use App\Models\Tournament;
+use App\Models\Entry;
+use App\Models\Eight_member;
+use App\Models\Four_member;
+use App\Models\Two_member;
 
 class TournamentController extends Controller
 {
-    public function tournament(){
+    public function tournament()
+    {
+        $A = Eight_member::find(1);
+        $B = Four_member::find(1);
+        $C = Two_member::find(1);
+        $teams = [];
         
-            $team_1 = "チームA";
-            $team_2 = "チームB";
-            $team_3 = "チームC";
-            $team_4 = "チームD";
-            $team_5 = "チームE";
-            $team_6 = "チームF";
-            $team_7 = "チームG";
-            $team_8 = "チームH";
-            $team_9 = "チームI";
-            $team_10 = "チームJ";
-            $team_11 = "チームK";
-            $team_12 = "チームL";
-            $team_13 = "チームM";
-            $team_14 = "チームN";
-            $team_15 = "チームO";
+        if(isset($A)){
+           for($i = 1; $i < 9; $i++){
+                $team = $A -> { "entry".$i }->nickname;
+                $teams[] = $team;
+            }
+        }
         
-        return view('matches.tournament')->with([
-            'team_1' => $team_1,
-            'team_2' => $team_2,
-            'team_3' => $team_3,
-            'team_4' => $team_4,
-            'team_5' => $team_5,
-            'team_6' => $team_6,
-            'team_7' => $team_7,
-            'team_8' => $team_8,
-            'team_9' => $team_9,
-            'team_10' => $team_10,
-            'team_11' => $team_11,
-            'team_12' => $team_12,
-            'team_13' => $team_13,
-            'team_14' => $team_14,
-            'team_15' => $team_15
-            ]);
+        if(isset($B)){
+            for($i = 1; $i < 5; $i++){
+                $team = $B -> { "entry".$i }->nickname;
+                $teams[] = $team;
+            }
+        }
+        
+        if(isset($C)){
+            for($i = 1; $i < 3; $i++){
+                $team = $C -> { "entry".$i }->nickname;
+                $teams[] = $team;
+            }
+        }
+        
+        $D = Tournament::find(1);
+        
+        if(isset($D)){
+            $champion = $D -> champion;
+        }
+        else{
+            $champion = ' ';
+        }
+        
+        $tournament = Tournament::find(1);
+        return view('matches.tournament3')->with(['teams' => $teams, 'tournament' => $tournament, 'champion' => $champion]);
+    }
+    
+    public function result(){
+        $A = Eight_member::find(1);
+        $B = Four_member::find(1);
+        $C = Two_member::find(1);
+        
+        if(isset($A)){
+            for($i = 1; $i < 9; $i++){
+                $team = $A -> { "entry".$i }->nickname;
+                $Ateams[] = $team;
+            }
+        }
+        else{
+            $Ateams = [];
+        }
+        
+        if(isset($B)){
+            for($i = 1; $i < 5; $i++){
+                $team = $B -> { "entry".$i }->nickname;
+                $Bteams[] = $team;
+            }
+        }
+        else{
+            $Bteams = [];
+        }
+        
+        if(isset($C)){
+            for($i = 1; $i < 3; $i++){
+                $team = $C -> { "entry".$i }->nickname;
+                $Cteams[] = $team;
+            }
+        }
+        else{
+            $Cteams = [];
+        }
+        
+        $tournament = Tournament::find(1);
+        
+        return view('matches.result')->with(['Ateams' => $Ateams, 'Bteams' => $Bteams, 'Cteams' => $Cteams, 'tournament' => $tournament]);
+    }
+            
+    public function ban()
+    {
+        return view('matches.ban');
+    }
+    
+    public function entry()
+    {
+        return view('matches.entry');
+    }
+    
+    public function home()
+    {
+        return view('matches.home');
+    }
+    
+    public function make()
+    {
+        return view('matches.make');
+    }
+    
+    public function operation()
+    {
+        return view('matches.operation');
     }
 }

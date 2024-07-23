@@ -15,3 +15,9 @@ use App\Http\Controllers\TournamentController;
 */
 
 Route::get('/', [TournamentController::class, 'tournament']);
+Route::get('/matches/result', [TournamentController::class, 'result']);
+Route::get('/matches/ban', [TournamentController::class, 'ban']);
+Route::get('/matches/entry', [TournamentController::class, 'entry']);
+Route::get('/matches/home', [TournamentController::class, 'home']);
+Route::get('/matches/make', [TournamentController::class, 'make']);
+Route::get('/matches/operation', [TournamentController::class, 'operation']);

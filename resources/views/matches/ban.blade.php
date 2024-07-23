@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-08">
         <title>CHUNITHM_Match</title>
-        <link rel="stylesheet" href="./CSS/home.css">
+        <link rel="stylesheet" href="/css/home.css">
     </head>
 
     <body>
@@ -15,7 +15,7 @@
             <div>下記から選択</div>
             <div><a href="">bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</a></div>
         </div>
-        <p><a href="tournament.blade.php">結果はこちら</a></p>
-        <p><a href="home.blade.php">戻る</a></p>
+        <p><a href="/">結果はこちら</a></p>
+        <p><a href="/matches/home">戻る</a></p>
     </body>
 </html>

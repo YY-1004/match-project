@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Score extends Model
 {
     use HasFactory;
+    
+    public function entry()
+    {
+        return $this->belongsTo(Entry::class);
+    }
 }

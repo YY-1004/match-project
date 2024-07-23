@@ -11,16 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('members', function (Blueprint $table) {
+        Schema::create('two_members', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('tournament_id')->constrained();
             $table->foreignId('entry1_id')->constrained('entries');
             $table->foreignId('entry2_id')->constrained('entries');
-            $table->foreignId('entry3_id')->constrained('entries');
-            $table->foreignId('entry4_id')->constrained('entries');
-            $table->foreignId('entry5_id')->constrained('entries');
-            $table->foreignId('entry6_id')->constrained('entries');
-            $table->foreignId('entry7_id')->constrained('entries');
-            $table->foreignId('entry8_id')->constrained('entries');
             $table->timestamps();
         });
     }
@@ -30,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('members');
+        Schema::dropIfExists('two_members');
     }
 };
