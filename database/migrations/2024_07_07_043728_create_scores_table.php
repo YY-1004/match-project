@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
             $table->foreignId('entry_id')->constrained();
+            $table->integer('member');
             $table->integer('number')->defailt(1);
             $table->integer('score');
             $table->integer('exscore');
             $table->integer('justice_critical');
             $table->integer('justice');
-            $table->integer('arrack');
+            $table->integer('attack');
             $table->integer('miss');
             $table->timestamps();
         });

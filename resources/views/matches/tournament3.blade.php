@@ -19,9 +19,9 @@
             @foreach ($teams as $team)
                 <div class='team'>
                     @if ($loop->odd)
-                        <a id="team{{ $loop->iteration }}" href="/matches/result#result{{ $loop->iteration }}">{{ $team }}</a>
+                        <a id="team{{ $loop->iteration }}" href="/matches/result/{{ $tournament->id }}#result{{ $loop->iteration }}">{{ $team }}</a>
                     @else
-                        <a id="team{{ $loop->iteration }}" href="/matches/result#result{{ $loop->iteration }}">{{ $team }}</a>
+                        <a id="team{{ $loop->iteration }}" href="/matches/result/{{ $tournament->id }}#result{{ $loop->iteration }}">{{ $team }}</a>
                     @endif
                 </div>
             @endforeach
@@ -29,7 +29,7 @@
         
         <a id="team15" href="/matches/result#result14">{{ $champion }}</a>
 
-        <p><a id="re" href="/matches/ban">戻る</a></p>
+        <p><a id="re" href="/matches/ban/{{ $tournament->id }}">戻る</a></p>
 
     </body>
 </html>

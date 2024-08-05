@@ -19,11 +19,6 @@ class Entry extends Model
         return $this->hasMany(Score::class);  
     }
     
-    public function confirmed_scores()   
-    {
-        return $this->hasMany(Confirmed_score::class);  
-    }
-    
     public function eight_member1()
     {
         return $this->belongsTo(Eight_member::class, 'entry1_id');

@@ -13,9 +13,9 @@
         <p>カテゴリー</p>
         <div class="contents_box2">
             <div>下記から選択</div>
-            <div><a href="">bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</a></div>
+            <div><a href="">bbbbbbb</a></div>
         </div>
-        <p><a href="/1">結果はこちら</a></p>
+        <p><a href="/{{ $tournament->id }}">結果はこちら</a></p>
         <p><a href="/matches/home">戻る</a></p>
     </body>
 </html>

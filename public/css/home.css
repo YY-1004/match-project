@@ -8,7 +8,11 @@ h1, p {
 
 h2 {
     display: inline;
-    text-align: center;
+}
+
+.odd {
+  display: inline;
+  margin-left: 290px;
 }
 
 .contents_box{
@@ -29,8 +33,7 @@ h2 {
 
 .result_table {
     border-collapse: collapse;
-    width: 100%;
-    max-width: 700px;
+    width: 700px;
     margin-top: 10px;
     margin-bottom: 50px;
   }
