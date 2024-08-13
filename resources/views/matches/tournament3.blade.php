@@ -11,7 +11,7 @@
         <p>{{ $tournament->name }}</p>
         <img
             class="tournament_image"
-            src="svg/tournament.svg"
+            src="/svg/tournament.svg"
             alt=""
         />
         
@@ -27,9 +27,9 @@
             @endforeach
         </div>
         
-        <a id="team15" href="/matches/result#result14">{{ $champion }}</a>
+        <a id="team15" href="/matches/result/{{ $tournament->id }}#result14">{{ $champion }}</a>
 
-        <p><a id="re" href="/matches/ban/{{ $tournament->id }}">戻る</a></p>
+        <p><a id="re" href="#" onclick="history.back()">戻る</a></p>
 
     </body>
 </html>

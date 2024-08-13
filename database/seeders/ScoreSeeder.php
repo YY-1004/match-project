@@ -126,61 +126,88 @@ class ScoreSeeder extends Seeder
                 'updated_at' => new DateTime(),
         ]);
         
-        DB::table('scores')->insert([
-                'entry_id' => 1,
-                'member' => 4,
-                'number' => 1,
-                'score' => 1010000,
-                'exscore' => 0,
-                'justice_critical' => 3000,
-                'justice' => 0,
-                'attack' => 0,
-                'miss' => 0,
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-        ]);
+        // DB::table('scores')->insert([
+        //         'entry_id' => 1,
+        //         'member' => 4,
+        //         'number' => 1,
+        //         'score' => 1010000,
+        //         'exscore' => 0,
+        //         'justice_critical' => 3000,
+        //         'justice' => 0,
+        //         'attack' => 0,
+        //         'miss' => 0,
+        //         'created_at' => new DateTime(),
+        //         'updated_at' => new DateTime(),
+        // ]);
         
-        DB::table('scores')->insert([
-                'entry_id' => 3,
-                'member' => 4,
-                'number' => 1,
-                'score' => 1009996,
-                'exscore' => 1,
-                'justice_critical' => 2999,
-                'justice' => 1,
-                'attack' => 0,
-                'miss' => 0,
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-        ]);
+        // DB::table('scores')->insert([
+        //         'entry_id' => 3,
+        //         'member' => 4,
+        //         'number' => 1,
+        //         'score' => 1009996,
+        //         'exscore' => 1,
+        //         'justice_critical' => 2999,
+        //         'justice' => 1,
+        //         'attack' => 0,
+        //         'miss' => 0,
+        //         'created_at' => new DateTime(),
+        //         'updated_at' => new DateTime(),
+        // ]);
         
-        DB::table('scores')->insert([
-                'entry_id' => 5,
-                'member' => 4,
-                'number' => 1,
-                'score' => 1009993,
-                'exscore' => 2,
-                'justice_critical' => 2998,
-                'justice' => 2,
-                'attack' => 0,
-                'miss' => 0,
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-        ]);
+        // DB::table('scores')->insert([
+        //         'entry_id' => 5,
+        //         'member' => 4,
+        //         'number' => 1,
+        //         'score' => 1009993,
+        //         'exscore' => 2,
+        //         'justice_critical' => 2998,
+        //         'justice' => 2,
+        //         'attack' => 0,
+        //         'miss' => 0,
+        //         'created_at' => new DateTime(),
+        //         'updated_at' => new DateTime(),
+        // ]);
         
-        DB::table('scores')->insert([
-                'entry_id' => 7,
-                'member' => 4,
-                'number' => 1,
-                'score' => 1009990,
-                'exscore' => 3,
-                'justice_critical' => 2997,
-                'justice' => 3,
-                'attack' => 0,
-                'miss' => 0,
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-        ]);
-
+        // DB::table('scores')->insert([
+        //         'entry_id' => 7,
+        //         'member' => 4,
+        //         'number' => 1,
+        //         'score' => 1009990,
+        //         'exscore' => 3,
+        //         'justice_critical' => 2997,
+        //         'justice' => 3,
+        //         'attack' => 0,
+        //         'miss' => 0,
+        //         'created_at' => new DateTime(),
+        //         'updated_at' => new DateTime(),
+        // ]);
+        
+        // DB::table('scores')->insert([
+        //         'entry_id' => 1,
+        //         'member' => 2,
+        //         'number' => 1,
+        //         'score' => 1009990,
+        //         'exscore' => 3,
+        //         'justice_critical' => 2997,
+        //         'justice' => 3,
+        //         'attack' => 0,
+        //         'miss' => 0,
+        //         'created_at' => new DateTime(),
+        //         'updated_at' => new DateTime(),
+        // ]);
+        
+        // DB::table('scores')->insert([
+        //         'entry_id' => 5,
+        //         'member' => 2,
+        //         'number' => 1,
+        //         'score' => 1009986,
+        //         'exscore' => 4,
+        //         'justice_critical' => 2996,
+        //         'justice' => 4,
+        //         'attack' => 0,
+        //         'miss' => 0,
+        //         'created_at' => new DateTime(),
+        //         'updated_at' => new DateTime(),
+        // ]);
     }
 }

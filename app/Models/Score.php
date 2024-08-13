@@ -13,4 +13,16 @@ class Score extends Model
     {
         return $this->belongsTo(Entry::class);
     }
+    
+    protected $fillable = [
+        'entry_id',
+        'member',
+        'number',
+        'exscore',
+		'score',
+		'justice_critical',
+		'justice',
+		'attack',
+		'miss',
+	];
 }

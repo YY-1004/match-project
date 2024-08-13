@@ -11,7 +11,7 @@
         <p>{{ $tournament->name }}</p>
         <p>結果</p>
         <div class="result_data">
-            @if(isset($Ascores[0]))
+            @if(isset($Bteams[0]))
                 <details>
                     <summary class="result_title">準々決勝</summary>
                         <div class='results'>
@@ -34,7 +34,7 @@
                 </details>
             @endif
 
-            @if(isset($Bscores[0]))
+            @if(isset($Cteams[0]))
                 <details>
                     <summary class="result_title">準決勝</summary>
                         <div class='results'>
@@ -57,7 +57,7 @@
                 </details>
             @endif
         
-            @if(isset($Cscores[0]))
+            @if(isset($tournament->champion))
                 <details>
                     <summary class="result_title">決勝</summary>
                         <div class='results'>
@@ -81,6 +81,6 @@
             @endif
         </div>
 
-        <p><a href="/{{ $tournament->id }}">戻る</a></p>
+        <p><a href="#" onclick="history.back()">戻る</a></p>
     </body>
 </html>

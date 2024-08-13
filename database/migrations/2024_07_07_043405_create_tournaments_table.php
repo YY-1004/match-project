@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('tournaments', function (Blueprint $table) {
             $table->id();
+            $table->string('search_id', 6);
+            $table->string('password', 255);
             $table->string('name', 20);
             $table->string('body', 100);
-            $table->string('champion', 20);
+            $table->string('champion', 20)->nullable(true);
             $table->integer('justice_point')->default(1);
             $table->integer('attack_point')->default(3);
             $table->integer('miss_point')->default(3);
