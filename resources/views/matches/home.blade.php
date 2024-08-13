@@ -11,7 +11,7 @@
         <label for="match1">参加中の大会（BAN曲指定、スコア登録、結果などはこちら）</label>
             <div class="contents_box" id=match1>
                 @foreach($tournaments as $tournament)
-                    <div><a href="/matches/ban/{{ $tournament->id }}">{{ $tournament->name }}</a></div>
+                    <div><a href="/matches/register/{{ $tournament->id }}">{{ $tournament->name }}</a></div>
                 @endforeach
             </div>
         <p><a href="/matches/entry">大会の参加はこちら</a></p>

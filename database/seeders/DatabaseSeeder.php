@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
             TournamentSeeder::class,
             EntrySeeder::class,
             Eight_memberSeeder::class,
-            Four_memberSeeder::class,
-            Two_memberSeeder::class,
+            // Four_memberSeeder::class,
+            // Two_memberSeeder::class,
             ScoreSeeder::class,
         ]);
     }

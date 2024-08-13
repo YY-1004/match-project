@@ -1,0 +1,1 @@
+// const jugde = '{{ route(/matches/result) }}';

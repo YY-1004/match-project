@@ -16,12 +16,12 @@ return new class extends Migration
             $table->foreignId('entry_id')->constrained();
             $table->integer('member');
             $table->integer('number')->defailt(1);
-            $table->integer('score');
-            $table->integer('exscore');
-            $table->integer('justice_critical');
-            $table->integer('justice');
-            $table->integer('attack');
-            $table->integer('miss');
+            $table->integer('score')->defailt(0);
+            $table->integer('exscore')->defailt(9999);
+            $table->integer('justice_critical')->defailt(0);
+            $table->integer('justice')->defailt(0);
+            $table->integer('attack')->defailt(0);
+            $table->integer('miss')->defailt(9999);
             $table->timestamps();
         });
     }

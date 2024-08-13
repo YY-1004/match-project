@@ -2,6 +2,10 @@ body {
     background-color: #FFFFFF;
 }
 
+h1{
+    white-space: nowrap;
+}
+
 h1, p {
     color: #000000;
 }
@@ -61,4 +65,36 @@ h2 {
 
   .operation {
     margin-top: 20px;
+  }
+  
+  #setting {
+    margin: 0;
+  }
+  
+  #explanation {
+    width: 200px;
+    height: 70px;
+  }
+  
+  .setting label {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 20px;
+  }
+  
+  #match-make, #explanation, #password {
+    vertical-align: top;
+    margin-top: 20px;
+  }
+  
+  /*#match-make, #explanation, #password {*/
+  /*  display: block;*/
+  /*}*/
+  
+  .error {
+    margin: 0;
+  }
+  
+  #members_list {
+    margin-bottom: 0;
   }

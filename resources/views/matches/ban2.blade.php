@@ -16,6 +16,6 @@
             <div><a href="">bbbbbbb</a></div>
         </div>
         <p><a href="/{{ $tournament->id }}">結果はこちら</a></p>
-        <p><a href="/matches/home">戻る</a></p>
+        <p><a href="#" onclick="history.back()">戻る</a></p>
     </body>
 </html>
