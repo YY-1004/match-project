@@ -10,7 +10,7 @@ h1{
     white-space: nowrap;
 }
 
-a {
+.teams a {
     position: absolute;
     white-space: nowrap;
 }

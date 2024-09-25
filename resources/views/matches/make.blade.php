@@ -6,8 +6,8 @@
         <link rel="stylesheet" href="/css/home.css">
     </head>
 
+    <x-app-layout>
     <body>
-        <h1>CHUNITHM Score Attack</h1>
         <p id=setting>大会の設定</p>
         
         <div class='setting'>
@@ -15,6 +15,7 @@
                 @csrf
                 
                 <label for="match-make">大会名：</label>
+                
                 <input type="text" name="tournament[name]" id="match-make" maxlength="20" placeholder="20文字以内"/><br>
                 @if($errors->has('tournament.name'))
                     <p class="error" style="color:red">※必須項目です</p>
@@ -66,4 +67,6 @@
         <p><a href="#" onclick="history.back()">戻る</a></p>
 
     </body>
+    </x-app-layout>
+
 </html>

@@ -5,7 +5,8 @@
         <title>CHUNITHM_Match</title>
         <link rel="stylesheet" href="/css/home.css">
     </head>
-
+    
+    <x-app-layout>
     <body>
         <h1>CHUNITHM Score Attack</h1>
         <p>{{ $tournament->name }}</p>
@@ -21,4 +22,6 @@
         
         <a href="#" onclick="history.back()">戻る</a>
     </body>
+    </x-app-layout>
+
 </html>

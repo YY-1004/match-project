@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('entries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
             $table->foreignId('tournament_id')->constrained();
             $table->string('nickname', 20);
             $table->timestamps();

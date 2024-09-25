@@ -6,10 +6,14 @@
         <link rel="stylesheet" href="/css/home.css">
     </head>
 
+    <x-app-layout>
+    <x-slot name="header">
+        {{ $tournament->name }}
+    </x-slot>
     <body>
-        <h1>CHUNITHM Score Attack</h1>
-        <p>{{ $tournament->name }}</p>
-        <p>結果</p>
+        <!--<h1>CHUNITHM Score Attack</h1>-->
+        <!--<p>{{ $tournament->name }}</p>-->
+        <h3>結果</h3>
         <div class="result_data">
             @if(isset($Bteams[0]))
                 <details>
@@ -18,10 +22,10 @@
                             @foreach($Ateams as $Ateam)
                                 @if ($loop->odd)
                                     <div class='odd'>
-                                        <h2 id ='result{{ $loop->iteration }}'>{{ $Ateam }} vs</h2>
+                                        <h2 id ='result{{ $loop->iteration }}'>{{ $Ateam["nickname"] }} vs</h2>
                                     </div>
                                 @else
-                                    <h2 id ='result{{ $loop->iteration }}'>{{ $Ateam }}</h2>
+                                    <h2 id ='result{{ $loop->iteration }}'>{{ $Ateam["nickname"] }}</h2>
 
                                     <table class="result_table">
                                         <tr>
@@ -41,10 +45,10 @@
                             @foreach($Bteams as $Bteam)
                                 @if ($loop->odd)
                                     <div class='odd'>
-                                        <h2 id ='result{{ $loop->iteration + 8 }}'>{{ $Bteam }}vs</h2>
+                                        <h2 id ='result{{ $loop->iteration + 8 }}'>{{ $Bteam["nickname"] }} vs</h2>
                                     </div>
                                 @else
-                                    <h2 id ='result{{ $loop->iteration + 8 }}'>{{ $Bteam }}</h2>
+                                    <h2 id ='result{{ $loop->iteration + 8 }}'>{{ $Bteam["nickname"] }}</h2>
         
                                     <table class="result_table">
                                         <tr>
@@ -64,10 +68,10 @@
                             @foreach($Cteams as $Cteam)
                                 @if ($loop->odd)
                                     <div class='odd'>
-                                        <h2 id ='result{{ $loop->iteration + 12 }}'>{{ $Cteam }}vs</h2>
+                                        <h2 id ='result{{ $loop->iteration + 12 }}'>{{ $Cteam["nickname"] }}vs</h2>
                                     </div>
                                 @else
-                                    <h2 id ='result{{ $loop->iteration + 12 }}'>{{ $Cteam }}</h2>
+                                    <h2 id ='result{{ $loop->iteration + 12 }}'>{{ $Cteam["nickname"] }}</h2>
         
                                     <table class="result_table">
                                         <tr>
@@ -83,4 +87,6 @@
 
         <p><a href="#" onclick="history.back()">戻る</a></p>
     </body>
+    </x-app-layout>
+
 </html>
