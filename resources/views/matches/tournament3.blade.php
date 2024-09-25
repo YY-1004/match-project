@@ -6,9 +6,13 @@
         <link rel="stylesheet" href="/css/tournament.css">
     </head>
 
+    <x-app-layout>
+        <x-slot name="header">
+            {{ $tournament->name }}
+        </x-slot>
     <body class="mySVG">
-        <h1>CHUNITHM Score Attack</h1>
-        <p>{{ $tournament->name }}</p>
+        <!--<h1>CHUNITHM Score Attack</h1>-->
+        <!--<p>{{ $tournament->name }}</p>-->
         <img
             class="tournament_image"
             src="/svg/tournament.svg"
@@ -25,11 +29,13 @@
                     @endif
                 </div>
             @endforeach
+            
+            <a id="team15" href="/matches/result/{{ $tournament->id }}#result14">{{ $champion }}</a>
         </div>
         
-        <a id="team15" href="/matches/result/{{ $tournament->id }}#result14">{{ $champion }}</a>
-
         <p><a id="re" href="#" onclick="history.back()">戻る</a></p>
 
     </body>
+    </x-app-layout>
+
 </html>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Tournament;
 use App\Models\Entry;
 use App\Models\Eight_member;
@@ -16,77 +17,36 @@ use App\Http\Requests\CreateRequest;
 
 class TournamentController extends Controller
 {
-    public function tournament()
+    public function tournament($tournament_id)
     {
-        $A = Eight_member::find(1);
-        $B = Four_member::find(1);
-        $C = Two_member::find(1);
+        $quarterfinals = Eight_member::where("tournament_id", $tournament_id)->first();
+        $semifinals = Four_member::where("tournament_id", $tournament_id)->first();
+        $finals = Two_member::where("tournament_id", $tournament_id)->first();
         $teams = [];
         
-        if(isset($A)){
-           for($i = 1; $i < 9; $i++){
-                $team = $A -> { "entry".$i }->nickname;
-                $teams[] = $team;
-            }
+        // 準々決勝のメンバーを送信
+        for($i = 1; $i < 9; $i++){
+            $team = $quarterfinals -> { "entry".$i }->nickname;
+            $teams[] = $team;
         }
-        
-        if(isset($B)){
+        // 準決勝のメンバーを送信
+        if(isset($semifinals)){
             for($i = 1; $i < 5; $i++){
-                $team = $B -> { "entry".$i }->nickname;
+                $team = $semifinals -> { "entry".$i }->nickname;
                 $teams[] = $team;
             }
         }
-        
-        if(isset($C)){
+        // 決勝のメンバーを送信
+        if(isset($finals)){
             for($i = 1; $i < 3; $i++){
-                $team = $C -> { "entry".$i }->nickname;
-                $teams[] = $team;
-            }
-        }
-        
-        $D = Tournament::find(1);
-        
-        if(isset($D)){
-            $champion = $D -> champion;
-        }
-        else{
-            $champion = ' ';
-        }
-        
-        $tournament = Tournament::find(1);
-        return view('matches.tournament3')->with(['teams' => $teams, 'tournament' => $tournament, 'champion' => $champion]);
-    }
-    
-    public function tournament2($tournament_id)
-    {
-        $A = Eight_member::where("tournament_id", $tournament_id)->first();
-        $B = Four_member::where("tournament_id", $tournament_id)->first();
-        $C = Two_member::where("tournament_id", $tournament_id)->first();
-        $teams = [];
-        
-        if(isset($A)){
-           for($i = 1; $i < 9; $i++){
-                $team = $A -> { "entry".$i }->nickname;
-                $teams[] = $team;
-            }
-        }
-        
-        if(isset($B)){
-            for($i = 1; $i < 5; $i++){
-                $team = $B -> { "entry".$i }->nickname;
-                $teams[] = $team;
-            }
-        }
-        
-        if(isset($C)){
-            for($i = 1; $i < 3; $i++){
-                $team = $C -> { "entry".$i }->nickname;
+                $team = $finals -> { "entry".$i }->nickname;
                 $teams[] = $team;
             }
         }
         
         $D = Tournament::find($tournament_id);
         
+        // 優勝者を送信
         if(isset($D)){
             $champion = $D -> champion;
             $tournament = $D;
@@ -98,67 +58,23 @@ class TournamentController extends Controller
         
         return view('matches.tournament3')->with(['teams' => $teams, 'tournament' => $tournament, 'champion' => $champion]);
     }
-    
-    public function result(){
-        $A = Eight_member::where("tournament_id", 1)->first();
-        $B = Four_member::where("tournament_id", 1)->first();
-        $C = Two_member::where("tournament_id", 1)->first();
+
+    public function result($tournament_id){
+        $quarterfinals = Eight_member::where("tournament_id", $tournament_id)->first();
+        $semifinals = Four_member::where("tournament_id", $tournament_id)->first();
+        $finals = Two_member::where("tournament_id", $tournament_id)->first();
         
-        if(isset($A)){
+        // 準々決勝の結果を送信
+        if(isset($quarterfinals)){
             for($i = 1; $i < 9; $i++){
-                $team = $A -> { "entry".$i }->nickname;
-                $Ateams[] = $team;
+                // $team = $quarterfinals -> { "entry".$i }->nickname;
+                // $entry_id = $quarterfinals -> { "entry".$i }->id;
+                // $Ateams[] = $team;
+                // $Aentries_id[] = $entry_id;
+                $Ateams[] = $quarterfinals -> { "entry".$i };
             }
-        }
-        else{
-            $Ateams = [];
-        }
-        
-        if(isset($B)){
-            for($i = 1; $i < 5; $i++){
-                $team = $B -> { "entry".$i }->nickname;
-                $Bteams[] = $team;
-            }
-        }
-        else{
-            $Bteams = [];
-        }
-        
-        if(isset($C)){
-            for($i = 1; $i < 3; $i++){
-                $team = $C -> { "entry".$i }->nickname;
-                $Cteams[] = $team;
-            }
-        }
-        else{
-            $Cteams = [];
-        }
-        
-        $D = Tournament::find(1);
-        if(isset($D)){
-            $tournament = $D;
-        }
-        else{
-            $tournament = ' ';
-        }
-        
-        return view('matches.result')->with(['Ateams' => $Ateams, 'Bteams' => $Bteams, 'Cteams' => $Cteams, 'tournament' => $tournament]);
-    }
-    
-    public function result2($tournament_id){
-        $A = Eight_member::where("tournament_id", $tournament_id)->first();
-        $B = Four_member::where("tournament_id", $tournament_id)->first();
-        $C = Two_member::where("tournament_id", $tournament_id)->first();
-        
-        if(isset($A)){
-            for($i = 1; $i < 9; $i++){
-                $team = $A -> { "entry".$i }->nickname;
-                $entry_id = $A -> { "entry".$i }->id;
-                $Ateams[] = $team;
-                $Aentries_id[] = $entry_id;
-            }
-            foreach ($Aentries_id as $Aentry_id){
-                $Ascores[] = Score::where('entry_id', $Aentry_id)->where('member', 8)->value("score");
+            foreach ($Ateams as $Ateam){
+                $Ascores[] = Score::where('entry_id', $Ateam["id"])->where('member', 8)->value("score");
             }
         }
         else{
@@ -166,16 +82,18 @@ class TournamentController extends Controller
             $Ascores = [];
         }
         
-        if(isset($B)){
+        // 準決勝の結果を送信
+        if(isset($semifinals)){
             for($i = 1; $i < 5; $i++){
-                $team = $B -> { "entry".$i }->nickname;
-                $entry_id = $B -> { "entry".$i }->id;
-                $Bteams[] = $team;
-                $Bentries_id[] = $entry_id;
+                // $team = $semifinals -> { "entry".$i }->nickname;
+                // $entry_id = $semifinals -> { "entry".$i }->id;
+                // $Bteams[] = $team;
+                // $Bentries_id[] = $entry_id;
+                $Bteams[] = $semifinals -> { "entry".$i };
             }
             
-            foreach ($Bentries_id as $Bentry_id){
-                $Bscores[] = Score::where('entry_id', $Bentry_id)->where('member', 4)->value("score");
+            foreach ($Bteams as $Bteam){
+                $Bscores[] = Score::where('entry_id', $Bteam["id"])->where('member', 4)->value("score");
             }
         }
         else{
@@ -183,16 +101,18 @@ class TournamentController extends Controller
             $Bscores = [];
         }
         
-        if(isset($C)){
+        // 決勝の結果を送信
+        if(isset($finals)){
             for($i = 1; $i < 3; $i++){
-                $team = $C -> { "entry".$i }->nickname;
-                $entry_id = $C -> { "entry".$i }->id;
-                $Cteams[] = $team;
-                $Centries_id[] = $entry_id;
+                // $team = $finals -> { "entry".$i }->nickname;
+                // $entry_id = $finals -> { "entry".$i }->id;
+                // $Cteams[] = $team;
+                // $Centries_id[] = $entry_id;
+                $Cteams[] = $finals -> { "entry".$i };
             }
             
-            foreach ($Centries_id as $Centry_id){
-                $Cscores[] = Score::where('entry_id', $Centry_id)->where('member', 2)->value("score");
+            foreach ($Cteams as $Cteam){
+                $Cscores[] = Score::where('entry_id', $Cteam["id"])->where('member', 2)->value("score");
             }
         }
         else{
@@ -200,27 +120,14 @@ class TournamentController extends Controller
             $Cscores = [];
         }
         
-        $D = Tournament::find($tournament_id);
-        if(isset($D)){
-            $tournament = $D;
+        $tournament_tentative = Tournament::find($tournament_id);
+        if(isset($tournament_tentative)){
+            $tournament = $tournament_tentative;
         }
         else{
             $tournament = Tournament::find(1);
         }
         
-        foreach ($Aentries_id as $Aentry_id){
-            $Ascores[] = Score::where('entry_id', $Aentry_id)->where('member', 8)->value("score");
-        }
-    
-        // foreach ($Bentries_id as $Bentry_id){
-        //     $Bscores[] = Score::where('entry_id', $Bentry_id)->where('member', 4)->value("score");
-        // }
-        
-        // foreach ($Centries_id as $Centry_id){
-        //     $Cscores[] = Score::where('entry_id', $Centry_id)->where('member', 2)->value("score");
-        // }
-        //dd($Cscores);
-
         return view('matches.result')->with(['Ateams' => $Ateams, 'Bteams' => $Bteams, 'Cteams' => $Cteams, 'tournament' => $tournament, 'Ascores' => $Ascores, 'Bscores' => $Bscores, 'Cscores' => $Cscores]);
     }
             
@@ -252,6 +159,7 @@ class TournamentController extends Controller
         $search_id = $request->input('search_id');
         $match = Tournament::where("search_id", $search_id)->first();
         
+        // 大会IDがヒットした場合は大会データを送信、ヒットしない場合はエラーを送信
         if(isset($match)){
             $match_name = $match->name;
             $tournament_body = $match->body;
@@ -266,18 +174,32 @@ class TournamentController extends Controller
     
     public function confirmation(Tournament $tournament)
     {
-        return view('matches.confirmation')->with(['tournament' => $tournament]);
+        $A = Eight_member::where("tournament_id", $tournament['id'])->first();
+        if(isset($A)){
+            $closed = "closed";
+            
+            return view('matches.confirmation')->with(['tournament' => $tournament, "closed" => $closed]);
+        }
+        else {
+            return view('matches.confirmation')->with(['tournament' => $tournament]);
+        }
     }
-    
-    public function home()
+
+    public function home(Tournament $tournament, Entry $entry)
     {
-        return view('matches.home');
-    }
-    
-    public function home2()
-    {
-        $tournament = Tournament::get();
-        return view('matches.home')->with(['tournaments' => $tournament]);
+        $applied = Entry::where("user_id", Auth::user()->id)->exists();
+        
+        // ログインしたユーザーが参加している大会データを送信、参加していない場合はNULLを送信
+        if($applied){
+            $users = Entry::where("user_id", Auth::user()->id)->get();
+            foreach($users as $user){
+                $tournament_entried[] = Tournament::find($user->tournament_id);
+            }
+        }else{
+            $tournament_entried = NULL;
+        }
+        
+        return view('matches.home')->with(['tournaments' => $tournament_entried]);
     }
     
     public function entryConfirmation(Request $request, Tournament $tournament, Entry $entry)
@@ -295,6 +217,7 @@ class TournamentController extends Controller
         $B = Four_member::where("tournament_id", $tournament->id)->first();
         $C = Two_member::where("tournament_id", $tournament->id)->first();
         
+        // 現在の大会状況を送信
         if(isset($tournament->champion)){
             $round = 'end';
         }
@@ -311,6 +234,7 @@ class TournamentController extends Controller
             $round = "start";
         }
         
+        // 準々決勝のデータを送信
         if(isset($A)){
             for($i = 1; $i < 9; $i++){
                 $team = $A -> { "entry".$i }->nickname;
@@ -326,7 +250,8 @@ class TournamentController extends Controller
             $Aentries_id = [];
             $Ascores_id = [];
         }
-        
+    
+        // 準決勝のデータを送信
         if(isset($B)){
             for($i = 1; $i < 5; $i++){
                 $team = $B -> { "entry".$i }->nickname;
@@ -343,6 +268,7 @@ class TournamentController extends Controller
             $Bscores_id = [];
         }
         
+        // 決勝のデータを送信
         if(isset($C)){
             for($i = 1; $i < 3; $i++){
                 $team = $C -> { "entry".$i }->nickname;
@@ -388,6 +314,7 @@ class TournamentController extends Controller
         $members = Entry::where('tournament_id', $tournament->id)->get();
         $count = count($members);
         
+        // 現在の大会状況を送信
         if(isset($tournament->champion)){
             $round = 'end';
         }
@@ -413,6 +340,7 @@ class TournamentController extends Controller
         $B = Four_member::where("tournament_id", $tournament->id)->first();
         $C = Two_member::where("tournament_id", $tournament->id)->first();
         
+        // 勝敗を決定し、次の試合のデータを送信
         if(isset($C)){
             for($i = 1; $i < 3; $i++){
                 $entries_id[] = $C -> { "entry".$i } -> id;
@@ -579,5 +507,164 @@ class TournamentController extends Controller
         $eight_member->save();
         
         return redirect('/matches/operation');
+    }
+    
+    public function profile(){
+        $tournament = Tournament::get();
+        return view('matches.profile');
+    }
+    
+    public function music(){
+                // クライアントインスタンス生成
+        $client = new \GuzzleHttp\Client();
+
+        // GET通信するURL
+        $url = 'https://api.chunirec.net/2.0/music/showall.json';
+        // $url = 'https://api.chunirec.net/2.0/music/search.json?q=The wheel to the right&region=jp2&token=875059118a4bb982f1ae9c6b04c54ccd853a1cc59dce716eb73838136e7a5df9fc094a154d8e9c6cc0d7f021140908c7a21e5e5d1c68b7e9f57dc99412dc4880';
+
+        // リクエスト送信と返却データの取得
+        // Bearerトークンにアクセストークンを指定して認証を行う
+        $response = $client->request(
+            'GET',
+            $url,
+            ['query' => ['region' => "jp2", 'token' => config('services.chunirec.token'),]
+            ]
+        );
+        // dd($response);
+        
+        // API通信で取得したデータはjson形式なので
+        // PHPファイルに対応した連想配列にデコードする
+        $questions = json_decode($response->getBody(), true);
+        
+        $level = 10;
+        $data = array_column($questions, 'data');
+        $mas = array_column($data, 'MAS');
+        $results = array_keys(array_column($mas, 'level'), $level);
+        $meta = array_column($questions, 'meta');
+        
+        foreach($results as $result){
+            // $music[] = array_column($meta[$result], 'title');
+            $music_list[] = $meta[$result];
+        }
+        // dd($music_list);
+        
+        return view('matches.music')->with(['music_list' => $music_list, 'level' => $level]);
+    }
+    
+    public function selectLevel(Request $request){
+        $level = $request["level"];
+        
+                // クライアントインスタンス生成
+        $client = new \GuzzleHttp\Client();
+
+        // GET通信するURL
+        $url = 'https://api.chunirec.net/2.0/music/showall.json';
+        // $url = 'https://api.chunirec.net/2.0/music/search.json?q=The wheel to the right&region=jp2&token=875059118a4bb982f1ae9c6b04c54ccd853a1cc59dce716eb73838136e7a5df9fc094a154d8e9c6cc0d7f021140908c7a21e5e5d1c68b7e9f57dc99412dc4880';
+
+        // リクエスト送信と返却データの取得
+        // Bearerトークンにアクセストークンを指定して認証を行う
+        $response = $client->request(
+            'GET',
+            $url,
+            ['query' => ['region' => "jp2", 'token' => config('services.chunirec.token'),]
+            ]
+        );
+        // dd($response);
+        
+        // API通信で取得したデータはjson形式なので
+        // PHPファイルに対応した連想配列にデコードする
+        $questions = json_decode($response->getBody(), true);
+        
+        $data = array_column($questions, 'data');
+        $mas = array_column($data, 'MAS');
+        $results = array_keys(array_column($mas, 'level'), $level);
+        $meta = array_column($questions, 'meta');
+        
+        foreach($results as $result){
+            // $music[] = array_column($meta[$result], 'title');
+            $music_list[] = $meta[$result];
+        }
+
+        return view('matches.music')->with(['music_list' => $music_list, 'level' => $level]);
+    }
+    
+    public function constRange(Request $request){
+        $level = $request["level"];
+        $const_min = $request["const_min"];
+        $const_max = $request["const_max"];
+        
+        // dump($level);
+        // dump($const_min);
+        // dd($const_max);
+        
+                // クライアントインスタンス生成
+        $client = new \GuzzleHttp\Client();
+
+        // GET通信するURL
+        $url = 'https://api.chunirec.net/2.0/music/showall.json';
+        // $url = 'https://api.chunirec.net/2.0/music/search.json?q=The wheel to the right&region=jp2&token=875059118a4bb982f1ae9c6b04c54ccd853a1cc59dce716eb73838136e7a5df9fc094a154d8e9c6cc0d7f021140908c7a21e5e5d1c68b7e9f57dc99412dc4880';
+
+        // リクエスト送信と返却データの取得
+        // Bearerトークンにアクセストークンを指定して認証を行う
+        $response = $client->request(
+            'GET',
+            $url,
+            ['query' => ['region' => "jp2", 'token' => config('services.chunirec.token'),]
+            ]
+        );
+        
+        // API通信で取得したデータはjson形式なので
+        // PHPファイルに対応した連想配列にデコードする
+        $questions = json_decode($response->getBody(), true);
+        
+        $data = array_column($questions, 'data');
+        $mas = array_column($data, 'MAS');
+        $results = array_keys(array_column($mas, 'level'), $level);
+        $meta = array_column($questions, 'meta');
+        
+        foreach($results as $result){
+            $music_tbd = $mas[$result];
+            if($const_min <= $music_tbd["const"] && $music_tbd["const"] <= $const_max){
+                $music_list[] = $meta[$result];
+            }
+        }
+        
+        // dd($music_list);
+        return view('matches.music')->with(['music_list' => $music_list, 'level' => $level, 'const_min' => $const_min, 'const_max' => $const_max]);
+    }
+    
+    public function searchMusic(){
+                // クライアントインスタンス生成
+        $client = new \GuzzleHttp\Client();
+
+        // GET通信するURL
+        $url = 'https://api.chunirec.net/2.0/music/showall.json';
+        // $url = 'https://api.chunirec.net/2.0/music/search.json?q=The wheel to the right&region=jp2&token=875059118a4bb982f1ae9c6b04c54ccd853a1cc59dce716eb73838136e7a5df9fc094a154d8e9c6cc0d7f021140908c7a21e5e5d1c68b7e9f57dc99412dc4880';
+
+        // リクエスト送信と返却データの取得
+        // Bearerトークンにアクセストークンを指定して認証を行う
+        $response = $client->request(
+            'GET',
+            $url,
+            ['query' => ['region' => "jp2", 'token' => config('services.chunirec.token'),]
+            ]
+        );
+        // dd($response);
+        
+        // API通信で取得したデータはjson形式なので
+        // PHPファイルに対応した連想配列にデコードする
+        $questions = json_decode($response->getBody(), true);
+        
+        $data = array_column($questions, 'data');
+        $mas = array_column($data, 'MAS');
+        $results = array_keys(array_column($mas, 'level'), $level);
+        $meta = array_column($questions, 'meta');
+        
+        foreach($results as $result){
+            // $music[] = array_column($meta[$result], 'title');
+            $music_list[] = $meta[$result];
+        }
+        
+        return view('matches.music')->with(['music_list' => $music_list]);
     }
 }

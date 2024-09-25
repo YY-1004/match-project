@@ -6,33 +6,38 @@
         <link rel="stylesheet" href="/css/home.css">
     </head>
 
-    <body>
-        <h1>CHUNITHM Score Attack</h1>
-        <p>運営中の大会</p>
+    <x-app-layout>
+    <body id=entry>
+        <!--<h1>CHUNITHM Score Attack</h1>-->
+        <!--<p>運営中の大会</p>-->
         
         <form action="/search" method="GET">
             
             @if(isset($research))
-                <label for="match-search">大会を探す</label>
-                <input type="search" name="search_id" id="match-research" maxlength="6" value={{ $research }} placeholder="6文字のIDを入力">
-                <button type="submit">検索</button>
+                <div class="search">
+                    <label for="match-search"><h3>大会を探す</h3></label>
+                    <input type="search" name="search_id" id="match-research" maxlength="6" value="{{ $research }}" placeholder="6文字のIDを入力">
+                    <button type="submit">検索</button>
+                </div>
             @else
-                <label for="match-search">大会を探す</label>
-                <input type="search" name="search_id" id="match-search" maxlength="6" placeholder="6文字のIDを入力">
-                <button type="submit">検索</button>
+                <div class="search">
+                    <label for="match-search"><h3>大会を探す</h3></label>
+                    <input type="search" name="search_id" id="match-search" maxlength="6" placeholder="6文字のIDを入力">
+                    <button type="submit">検索</button>
+                </div>
             @endif
-            
-            
             
             @if(isset($match))
                 <p>検索結果</p>
                 <a href=/matches/confirmation/{{$tournament_id}}>{{ $match }}</a><br>
-                <a>{{ $tournament_body }}</a>
+                <a class="normal">{{ $tournament_body }}</a>
             @elseif(isset($error))
                 <p>指定したIDの大会は存在しません</p>
             @endif
             
-            <p><a href="/">戻る</a></p>
+            <!--<p><a href="/">戻る</a></p>-->
         </form>
     </body>
+    </x-app-layout>
+
 </html>
