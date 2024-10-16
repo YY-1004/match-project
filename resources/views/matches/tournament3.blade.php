@@ -13,27 +13,30 @@
     <body class="mySVG">
         <!--<h1>CHUNITHM Score Attack</h1>-->
         <!--<p>{{ $tournament->name }}</p>-->
-        <img
-            class="tournament_image"
-            src="/svg/tournament.svg"
-            alt=""
-        />
         
-        <div class='teams'>
-            @foreach ($teams as $team)
-                <div class='team'>
-                    @if ($loop->odd)
-                        <a id="team{{ $loop->iteration }}" href="/matches/result/{{ $tournament->id }}#result{{ $loop->iteration }}">{{ $team }}</a>
-                    @else
-                        <a id="team{{ $loop->iteration }}" href="/matches/result/{{ $tournament->id }}#result{{ $loop->iteration }}">{{ $team }}</a>
-                    @endif
-                </div>
-            @endforeach
+        <div class="tournament_bracket">
+            <img
+                class="tournament_image"
+                src="/svg/tournament.svg"
+                alt=""
+            />
             
-            <a id="team15" href="/matches/result/{{ $tournament->id }}#result14">{{ $champion }}</a>
+            <div class='teams'>
+                @foreach ($teams as $team)
+                    <div class='team'>
+                        @if ($loop->odd)
+                            <a id="team{{ $loop->iteration }}" href="/matches/result/{{ $tournament->id }}#result{{ $loop->iteration }}">{{ $team }}</a>
+                        @else
+                            <a id="team{{ $loop->iteration }}" href="/matches/result/{{ $tournament->id }}#result{{ $loop->iteration }}">{{ $team }}</a>
+                        @endif
+                    </div>
+                @endforeach
+                
+                <a id="team15" href="/matches/result/{{ $tournament->id }}#result14">{{ $champion }}</a>
+            </div>
         </div>
         
-        <p><a id="re" href="#" onclick="history.back()">戻る</a></p>
+        <p><a id="re" href="#" onclick="history.back()" class="center">戻る</a></p>
 
     </body>
     </x-app-layout>

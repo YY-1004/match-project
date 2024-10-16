@@ -2,8 +2,10 @@ body {
     background-color: #FFFFFF;
 }
 
-img {
+.tournament_bracket img {
     width: 1000px;
+    margin: auto;
+    max-width: none;
 }
 
 h1{
@@ -13,81 +15,171 @@ h1{
 .teams a {
     position: absolute;
     white-space: nowrap;
+    width: 90px;
+    text-align: center;
 }
 
-#A, #team1 {
-    top: 152px;
-    left: 90px;
+@media screen and (min-width: 1001px) {
+    .teams a {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+    }
+    
+    #A, #team1 {
+        top: 156px;
+        right: 772px;
+    
+    }
+    
+    #B, #team2 {
+        top: 226px;
+        right: 772px;
+    }
+    
+    #C, #team3 {
+        top: 296px;
+        right: 772px;
+    }
+
+    #D, #team4 {
+        top: 366px;
+        right: 772px;
+    }
+    
+    #E, #team5 {
+        top: 436px;
+        right: 772px;
+    }
+    
+    #F, #team6 { 
+        top: 506px;
+        right: 772px;
+    }
+    
+    #G, #team7 {
+        top: 576px;
+        right: 772px;
+    }
+    
+    #H, #team8 {
+        top: 646px;
+        right: 772px;
+    }
+    
+    #I, #team9 {
+        top: 190px;
+        right: 260px;
+    }
+    
+    #J, #team10 {
+        top: 330px;
+        right: 260px;
+    }
+    
+    #K, #team11 {
+        top: 470px;
+        right: 260px;
+    }
+    
+    #L, #team12 {
+        top: 610px;
+        right: 260px;
+    }
+    
+    #M, #team13 {
+        top: 260px;
+        left: 252px;
+    }
+    
+    #N, #team14 {
+        top: 542px;
+        left: 252px;
+    }
+    
+    #O, #team15 {
+        top: 400px;
+        left: 764px;
+    }
 }
 
-#B, #team2 {
-    top: 222px;
-    left: 90px;
-}
+@media screen and (max-width: 1000px) {
+    #A, #team1 {
+        top: 156px;
+        left: 68px;
+    }
+    
+    #B, #team2 {
+        top: 226px;
+        left: 68px;
+    }
+    
+    #C, #team3 {
+        top: 296px;
+        left: 68px;
+    }
 
-#C, #team3 {
-    top: 292px;
-    left: 90px;
-}
-
-#D, #team4 {
-    top: 362px;
-    left: 90px;
-}
-
-#E, #team5 {
-    top: 432px;
-    left: 90px;
-}
-
-#F, #team6 { 
-    top: 502px;
-    left: 90px;
-}
-
-#G, #team7 {
-    top: 572px;
-    left: 90px;
-}
-
-#H, #team8 {
-    top: 642px;
-    left: 90px;
-}
-
-#I, #team9 {
-    top: 187px;
-    left: 345px;
-}
-
-#J, #team10 {
-    top: 327px;
-    left: 345px;
-}
-
-#K, #team11 {
-    top: 467px;
-    left: 345px;
-}
-
-#L, #team12 {
-    top: 607px;
-    left: 345px;
-}
-
-#M, #team13 {
-    top: 257px;
-    left: 600px;
-}
-
-#N, #team14 {
-    top: 537px;
-    left: 600px;
-}
-
-#O, #team15 {
-    top: 395px;
-    left: 855px;
+    #D, #team4 {
+        top: 366px;
+        left: 68px;
+    }
+    
+    #E, #team5 {
+        top: 436px;
+        left: 68px;
+    }
+    
+    #F, #team6 { 
+        top: 506px;
+        left: 68px;
+    }
+    
+    #G, #team7 {
+        top: 576px;
+        left: 68px;
+    }
+    
+    #H, #team8 {
+        top: 646px;
+        left: 68px;
+    }
+    
+    #I, #team9 {
+        top: 190px;
+        left: 325px;
+    }
+    
+    #J, #team10 {
+        top: 330px;
+        left: 325px;
+    }
+    
+    #K, #team11 {
+        top: 470px;
+        left: 325px;
+    }
+    
+    #L, #team12 {
+        top: 610px;
+        left: 325px;
+    }
+    
+    #M, #team13 {
+        top: 260px;
+        left: 581px;
+    }
+    
+    #N, #team14 {
+        top: 540px;
+        left: 581px;
+    }
+    
+    #O, #team15 {
+        top: 400px;
+        left: 838px;
+    }
 }
 
 #re {
