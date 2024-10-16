@@ -14,15 +14,20 @@
             <form action="/create" method="POST">
                 @csrf
                 
-                <label for="match-make">大会名：</label>
+                <div class="match-name">
+                    <label for="match-make">大会名：</label>
+                    <input type="text" name="tournament[name]" id="match-make" maxlength="20" placeholder="20文字以内"/><br>
+                </div>
                 
-                <input type="text" name="tournament[name]" id="match-make" maxlength="20" placeholder="20文字以内"/><br>
                 @if($errors->has('tournament.name'))
                     <p class="error" style="color:red">※必須項目です</p>
                 @endif
             
-                <label for="explanation">説明文：</label>
-                <textarea type="text" name="tournament[body]" id="explanation" minlength="1" maxlength="100" placeholder="100文字以内"></textarea><br>
+                <div class="match-explanation">
+                    <label for="explanation">説明文：</label>
+                    <textarea type="text" name="tournament[body]" id="explanation" minlength="1" maxlength="100" placeholder="100文字以内"></textarea><br>
+                </div>
+                
                 @if($errors->has('tournament.body'))
                     <p class="error" style="color:red">※必須項目です</p>
                 @endif
@@ -54,17 +59,20 @@
                 <!--    <input type="radio" name="primary">有-->
                 <!--    <input type="radio" name="primary">無-->
                 
-                <label for="password">パスワード：</label>
-                <input type="text" name="tournament[password]" id="password" minlength="4" maxlength="20" placeholder="4文字以上20文字以内"/><br>
+                <div class="match-password">
+                    <label for="password">パスワード：</label>
+                    <input type="text" name="tournament[password]" id="password" minlength="4" maxlength="20" placeholder="4文字以上20文字以内"/><br>
+                </div>
+                
                 @if($errors->has('tournament.password'))
                     <p class="error" style="color:red">※必須項目です</p>
                 @endif
                 
-                <input type="submit" value="作成"/>
+                <input type="submit" value="作成" id=make-submit />
             </form>
         </div>
             
-        <p><a href="#" onclick="history.back()">戻る</a></p>
+        <p><a href="#" onclick="history.back()" class="center">戻る</a></p>
 
     </body>
     </x-app-layout>

@@ -164,7 +164,14 @@ class TournamentController extends Controller
             $match_name = $match->name;
             $tournament_body = $match->body;
             $tournament_id = $match->id;
-            return view('matches.entry')->with(['match' => $match_name,'tournament_body' => $tournament_body, 'tournament_id' => $tournament_id, 'research' => $search_id]);
+            
+            $quarterfinals = Eight_member::where("tournament_id", $tournament_id)->first();
+            if(isset($quarterfinals)){
+                $recruitment_status = "募集は締め切りました";
+            } else {
+                $recruitment_status = "募集中";
+            }
+            return view('matches.entry')->with(['match' => $match_name,'tournament_body' => $tournament_body, 'tournament_id' => $tournament_id, 'research' => $search_id, 'recruitment_status' => $recruitment_status]);
         }
         else{
             $error = "error";
@@ -174,8 +181,8 @@ class TournamentController extends Controller
     
     public function confirmation(Tournament $tournament)
     {
-        $A = Eight_member::where("tournament_id", $tournament['id'])->first();
-        if(isset($A)){
+        $quarterfinals = Eight_member::where("tournament_id", $tournament['id'])->first();
+        if(isset($quarterfinals)){
             $closed = "closed";
             
             return view('matches.confirmation')->with(['tournament' => $tournament, "closed" => $closed]);
@@ -205,6 +212,7 @@ class TournamentController extends Controller
     public function entryConfirmation(Request $request, Tournament $tournament, Entry $entry)
     {
         $input = $request['entry'];
+        $entry->user_id = Auth::user()->id;
         $entry->tournament_id = $tournament->id;
         $entry->nickname = $input["nickname"];
         $entry->save();

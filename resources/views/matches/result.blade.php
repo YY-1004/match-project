@@ -13,7 +13,6 @@
     <body>
         <!--<h1>CHUNITHM Score Attack</h1>-->
         <!--<p>{{ $tournament->name }}</p>-->
-        <h3>結果</h3>
         <div class="result_data">
             @if(isset($Bteams[0]))
                 <details>
@@ -85,7 +84,7 @@
             @endif
         </div>
 
-        <p><a href="#" onclick="history.back()">戻る</a></p>
+        <p><a href="#" onclick="history.back()" class="center">戻る</a></p>
     </body>
     </x-app-layout>
 

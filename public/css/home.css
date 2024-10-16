@@ -2,7 +2,7 @@ body {
     background-color: #FFFFFF;
 }
 
-a {
+main a {
   color: blue;
   text-decoration: underline;
 }
@@ -30,13 +30,17 @@ h2 {
 }
 
 #match{
-  margin-left: 35%;
+  width: 550px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 20px;
   font-size: 20px;
 }
 
 #manage{
-  margin-left: 35%;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 20px;
   font-size: 20px;
 }
@@ -46,7 +50,7 @@ h2 {
 }
 
 .contents_box{
-    margin: auto;
+    margin: 10px auto auto auto;
     width: 400px;
     height: 150px;
     background-color: aliceblue;
@@ -63,149 +67,326 @@ h2 {
 }
 
 .result_table {
-    border-collapse: collapse;
-    width: 700px;
-    margin-top: 10px;
-    margin-bottom: 50px;
-    margin: 0 auto;
-  }
-  .result_table tr {
-    background-color: #e6f1f6;
-  }
-  .result_table tr:nth-child(odd) {
-    background-color: #fff;
-  }
-  .result_table th, .result_table td {
-    padding: 1em;
-  }
-  .result_table caption{
-    font-weight: bold;
-    font-size: 30px;
-    text-align: center;
-    min-width: 4em;
-  }
-  .result_table th {
-    font-weight: bold;
-    text-align: center;
-    width: 20%;
-    min-width: 4em;
-  }
+  border-collapse: collapse;
+  width: 700px;
+  /*margin-top: 10px;*/
+  /*margin-bottom: 50px;*/
+  margin: 10px auto 10px auto;
+}
+.result_table tr {
+  background-color: #e6f1f6;
+}
+.result_table tr:nth-child(odd) {
+  background-color: #fff;
+}
+.result_table th, .result_table td {
+  padding: 1em;
+}
+.result_table caption{
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  min-width: 4em;
+}
+.result_table th {
+  font-weight: bold;
+  text-align: center;
+  width: 20%;
+  min-width: 4em;
+}
 
-  .operation {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .search h3{
-    margin-left: 35%;
-    margin-top: 20px;
-    font-size: 20px;
-  }
-  
-  .search input{
-    margin-left: 40%;
-    margin-top: 20px;
-    font-size: 18px;
-  }
-  
-  #setting {
-    margin: 0;
-  }
-  
-  #explanation {
-    width: 200px;
-    height: 70px;
-  }
-  
-  .setting label {
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 20px;
-  }
-  
-  #match-make, #explanation, #password {
-    vertical-align: top;
-    margin-top: 20px;
-  }
-  
-  /*#match-make, #explanation, #password {*/
-  /*  display: block;*/
-  /*}*/
-  
-  .error {
-    margin: 0;
-  }
-  
-  #members_list {
-    margin-bottom: 0;
-  }
-  
-  .result {
-    text-align:center;
-  }
-  
-  .number_input{
-    display: inline-block;
-    margin-left: auto;
-    margin-right: 0;
-  }
-  
-  .number_input {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-  }
-  .view {
-    text-align: center;
-    align-content: center;
-  }
-  
-  .content select {
-    width: 150px;
+.operation {
+  margin-top: 20px;
+  text-align: center;
+}
 
-  }
-  
-  .content input {
-    width: 150px;
-    text-align: center;
-  }
-  
-  .content {
-    margin-left: 38%;
-  }
-  
-  #app_header a {
+.search h3{
+  width: 350px;
+  margin: 20px auto 10px auto;
+  font-size: 20px;
+}
+
+.serach_form{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.search input{
+  /*margin-left: 40%;*/
+  /*margin-top: 20px;*/
+  font-size: 18px;
+}
+
+#setting {
+  font-size: 20px;
+  margin: 0;
+  text-align: center;
+}
+
+.match-name input {
+  width: 350px;
+}
+
+.match-password input {
+  width: 340px;
+}
+
+#explanation {
+  width: 350px;
+  height: 400px;
+}
+
+.setting label {
+  /*display: inline-block;*/
+  vertical-align: top;
+  margin-top: 8px;
+}
+
+/*.match-name {*/
+/*  display: flex;*/
+/*  justify-content: flex-end;*/
+/*  margin-right: 35%;*/
+/*  margin-top: 10px;*/
+/*}*/
+
+/*.match-explanation{*/
+/*  display: flex;*/
+/*  justify-content: flex-end;*/
+/*  margin-right: 35%;*/
+/*  margin-top: 10px;*/
+/*}*/
+
+.match-name, .match-explanation, .match-password {
+  display: flex;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+}
+
+/*#match-make, #explanation, #password {*/
+/*  vertical-align: top;*/
+/*  margin-top: 20px;*/
+/*}*/
+
+/*#match-make, #explanation, #password {*/
+/*  display: block;*/
+/*}*/
+
+.error {
+  margin: 0;
+  text-align: center;
+}
+
+#make-submit {
+  display: block;
+  margin: 20px auto auto auto;
+  width: 50px;
+  height: 30px;
+  border: 1px solid;
+  border-radius: 8px;
+  color: #000000;
+}
+
+.entry_table {
+  margin-top: 20px;
+}
+
+#members_list {
+  margin-bottom: 0;
+}
+
+#entries_list {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+summary {
+  list-style: none;
+  width: 150px;
+  margin: 10px auto 10px auto;
+  border: 1px solid;
+  border-radius: 8px;
+  color: #000000;
+}
+
+.result {
+  text-align: center;
+}
+
+.number_input{
+  display: inline-block;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.content_title p {
+  width: 300px;
+  margin: 10px auto 20px auto;
+  font-size: 20px;
+}
+
+/*.content_body {*/
+/*  margin-top: 20px;*/
+/*}*/
+
+.number_input {
+  display: flex;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.view {
+  display: block;
+  width: 180px;
+  text-align: center;
+  align-content: center;
+}
+
+.preparation p, .end p {
+  text-align: center;
+  align-content: center;
+}
+
+.content select {
+  width: 150px;
+}
+
+.content input {
+  width: 150px;
+  text-align: center;
+}
+
+.content {
+  margin: auto;
+}
+
+#app_header a {
   text-decoration:none;
-  }
-  
-  button {
-    border: solid 1px #333;
-  }
-  
-  #save {
-    display: block;
-    border: solid 1px #333;
-    padding: 9px 12px;
-    margin-left: 100px;
-    margin-top: 10px;
-  }
-  
-  .search button{
-    padding: 9px 12px;
-  }
-  
-  .center {
-    display: block;
-    text-align: center;
-    margin-top: 30px;
-  }
-  
-  .level_select {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .const_range {
-    display: block;
-    text-align: center;
-    margin-bottom: 30px;
-  }
+}
+
+button {
+  border: solid 1px #333;
+}
+
+#save {
+  display: block;
+  border: solid 1px #333;
+  padding: 9px 12px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.search button{
+  padding: 9px 12px 7px 9px;
+}
+
+table {
+  margin: auto;
+}
+
+td {
+  border: solid 1px;
+  padding: 5px;
+}
+
+.table-heading {
+  width: 90px;
+  text-align: center;
+}
+
+#serach-result, #serach-error {
+  width: 420px;
+  margin: 30px auto 5px auto;
+}
+
+#serach-result-title {
+  width: 350px;
+  margin: auto;
+  overflow-wrap: break-word;
+}
+
+#serach-result-explanation {
+  width: 350px;
+  margin: auto;
+  overflow-wrap: break-word;
+}
+
+#entry-button {
+  display: block;
+  width: 75px;
+  height: 35px;
+  margin: 20px auto;
+}
+
+.center {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.level_select {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.const_range {
+  display: block;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.entry_form table {
+  margin-bottom: 20px;
+}
+
+.entry p, .entry lavel {
+  display: block;
+  font-size: 16px;
+  width: 300px;
+  margin: auto;
+}
+
+.entry_form p {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.nickname_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#entry_confirmation {
+  display: block;
+  margin: 20px auto auto auto;
+  width: 70px;
+  height: 30px;
+  border: 1px solid;
+  border-radius: 8px;
+  color: #000000;
+}
+
+.select_members input {
+  margin-left: 48%;
+}
+
+#proceed, #select_confirmed, #start {
+  display: block;
+  border: solid 1px #333;
+  padding: 4px 8px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+#select_confirmed:disabled {
+  border: solid 1px gray;
+  color: gray;
+}

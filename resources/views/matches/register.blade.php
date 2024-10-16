@@ -15,25 +15,27 @@
         <!--<h3>{{ $tournament->name }}</h3>-->
         
         @if( $round === "start" )
-            <p>メンバー募集中です</p>
-            <p>開始までもうしばらくお待ちください</p>
-        @else
-            <div class="result">
-                <a href="/matches/tournament/{{ $tournament->id }}">結果はこちら</a>
+            <div class="preparation">
+                <p>メンバー募集中です</p>
+                <p>開始までもうしばらくお待ちください</p>
             </div>
-            
+        @else
             @if( $round === "end" )
-                <p>全試合が終了しました</p>
+                <div class="end">
+                    <p>全試合が終了しました</p>
+                </div>
             @else
                 <div class="content">
                     <form action="/scores/" method="POST">
                     @csrf
                     @method('PUT')
-                        <div class='content__title'>
-                            <h4>スコア登録</h4>
-                            <p>現在{{ $round }}です</p>
+                        <div class='content_title'>
+                            <p>スコア登録　（現在{{ $round }}です）</p>
+                        </div>
+        
+                        <div class='content_body'>
                             <div class="number_input">
-                                <div class="view"><label for="team">チーム選択:</label></div>
+                                <div class="view"><label for="team">チーム選択</label></div>
                                 <select size="1" name="score[id]" id="team">
                                     @if (isset($Cscores_id[0]))
                                         @foreach($Cteams as $Cteam)
@@ -50,31 +52,28 @@
                                     @endif
                                 </select>
                             </div>
-                        </div>
-        
-                        <div class='content__body'>
                             <div class="number_input">
-                                <div class="view"><label for="score">SCORE:</label></div>
+                                <div class="view"><label for="score">SCORE</label></div>
                                 <div class="input"><input type="number" min="0" max="1010000" id="score" name="score[score]" value="0"></div>
                             </div>
                             
                             <div class="number_input">
-                                <div class="view"><label for="justice-critical">JUSTICE CRITICAL:</label></div>
+                                <div class="view"><label for="justice-critical">JUSTICE CRITICAL</label></div>
                                 <div class="input"><input type="number" min="0" max="10000" id="justice-critical" name="score[justice_critical]" value="0"></div>
                             </div>
                             
                             <div class="number_input">
-                                <div class="view"><label for="justice">JUSTICE:</label></div>
+                                <div class="view"><label for="justice">JUSTICE</label></div>
                                 <div class="input"><input type="number" min="0" max="10000" id="justice" name="score[justice]" value="0"></div>
                             </div>
                                 
                             <div class="number_input">
-                                <div class="view"><label for="attack">ATTACK:</label></div>
+                                <div class="view"><label for="attack">ATTACK</label></div>
                                 <div class="input"><input type="number" min="0" max="10000" id="attack" name="score[attack]" value="0"></div>
                             </div>
         
                             <div class="number_input">
-                                <div class="view"><label for="miss">MISS:</label></div>
+                                <div class="view"><label for="miss">MISS</label></div>
                                 <div class="input"><input type="number" min="0" max="10000" id="miss" name="score[miss]" value="0"></div>
                             </div>
                         </div>
@@ -82,8 +81,12 @@
                     </form>
                 </div>
             @endif
+            
+            <div class="result">
+                <a href="/matches/tournament/{{ $tournament->id }}">結果はこちら</a>
+            </div>
         @endif
-        <a href="#" onclick="history.back()">戻る</a>
+        <a href="#" onclick="history.back()" class="center" class="center">戻る</a>
     </body>
     </x-app-layout>
 
