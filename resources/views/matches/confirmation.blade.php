@@ -26,6 +26,8 @@
         
             @if(isset($closed))
                 <p>募集が終了しています</p>
+            @elseif(isset($error))
+                <p>登録済みです</p>
             @else
                 <form action="/entry/confirmation/{{$tournament->id}}" method="POST">
                     @csrf

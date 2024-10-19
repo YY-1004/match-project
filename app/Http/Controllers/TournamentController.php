@@ -182,12 +182,20 @@ class TournamentController extends Controller
     public function confirmation(Tournament $tournament)
     {
         $quarterfinals = Eight_member::where("tournament_id", $tournament['id'])->first();
+        $entries_id = Entry::where("tournament_id", $tournament['id'])->where("user_id", Auth::user()->id) ->first();
+        
         if(isset($quarterfinals)){
             $closed = "closed";
             
             return view('matches.confirmation')->with(['tournament' => $tournament, "closed" => $closed]);
         }
+        elseif(isset($entries_id)){
+            $error = "error";
+            
+            return view('matches.confirmation')->with(['tournament' => $tournament, "error" => $error]);
+        }
         else {
+            // $user_id = Auth::user()->id;
             return view('matches.confirmation')->with(['tournament' => $tournament]);
         }
     }
