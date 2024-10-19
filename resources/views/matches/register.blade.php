@@ -26,7 +26,7 @@
                 </div>
             @else
                 <div class="content">
-                    <form action="/scores/" method="POST">
+                    <form action="/scores" method="POST">
                     @csrf
                     @method('PUT')
                         <div class='content_title'>

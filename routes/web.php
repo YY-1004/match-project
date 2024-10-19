@@ -34,7 +34,7 @@ Route::controller(TournamentController::class)->middleware(['auth'])->group(func
     Route::get('/matches/confirmation/{tournament}', [TournamentController::class, 'confirmation']);
     Route::post('/entry/confirmation/{tournament}', [TournamentController::class, 'entryConfirmation']);
     Route::get('/matches/register/{tournament}', [TournamentController::class, 'register']);
-    Route::put('/scores/', [TournamentController::class, 'update']);
+    Route::put('/scores', [TournamentController::class, 'update']);
     Route::get('/matches/judge/{tournament}', [TournamentController::class, 'judge']);
     Route::get('/next/{tournament}', [TournamentController::class, 'nextMatch']);
     Route::get('/matches/make', [TournamentController::class, 'make']);
